@@ -6,30 +6,26 @@ export default class AddFormContainer extends Component {
   constructor (props) {
     super(props);
     // Initial state
-    this.state = { newGame: {}};
+    this.state = { newItem: {}};
     // Bind this (context) to the functions to be passed down to the children components
     this.submit = this.submit.bind(this);
     this.setGame = this.setGame.bind(this);
   }
-  submit (event) {
-    event.preventDefault();
-    console.log(this.state.newGame);
-    /*
-    const newGame = Object.assign({}, { picture: $('#picture').attr('src') }, this.state.newGame);
-    fetch('http://localhost:8080/games', {
+  submit () {
+    console.log(this.state.newItem);
+    const newItem = this.state.newItem;
+    fetch('http://localhost:8080/api/list', {
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
       method: 'POST',
-      body: JSON.stringify(newGame)
+      body: JSON.stringify(newItem)
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data.message);
       // We go back to the games list view
-      hashHistory.push('/games');
+      hashHistory.push('/home');
     });
-    */
   }
   // We make sure to keep the state up-to-date to the latest input values
   setGame (event) {
@@ -39,7 +35,7 @@ export default class AddFormContainer extends Component {
     } else {
       radiobutton = 'option2';
     }
-    const newGame = {
+    const newItem = {
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
       select: document.getElementById('select').value,
@@ -47,7 +43,7 @@ export default class AddFormContainer extends Component {
       checkbox: document.getElementById('checkbox').checked,
       textarea: document.getElementById('textarea').value
     };
-    this.setState({ newGame });
+    this.setState({ newItem });
   }
   render () {
     return <Form submit={this.submit} setGame={this.setGame} />
