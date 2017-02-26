@@ -19,6 +19,7 @@ export default class Home extends PureComponent {
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <Link to="/form" className="dropdown-item">Formular</Link>
+                  <Link to="/list" className="dropdown-item">List</Link>
                 </div>
               </li>
               <li className="nav-item">

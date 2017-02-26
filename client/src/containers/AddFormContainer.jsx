@@ -24,7 +24,7 @@ export default class AddFormContainer extends Component {
     .then(response => response.json())
     .then(data => {
       // We go back to the games list view
-      hashHistory.push('/home');
+      hashHistory.push('/list');
     });
   }
   // We make sure to keep the state up-to-date to the latest input values

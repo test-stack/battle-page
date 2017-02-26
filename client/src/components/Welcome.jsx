@@ -7,7 +7,6 @@ export default class Welcome extends PureComponent {
         <div className="card-block">
           <h1 className="card-title">Welcome</h1>
           <h6 className="card-subtitle mb-2 text-muted">Uvodni stranka</h6>
-
         </div>
       </div>
     );

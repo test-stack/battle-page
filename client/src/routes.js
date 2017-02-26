@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import { AddFormContainer, FormContainer } from './containers';
+import { AddFormContainer, ListContainer } from './containers';
 import { Home, Welcome, About, Options, Form} from './components';
 
 // Use hashHistory for easier development
@@ -11,8 +11,8 @@ const routes = (
       <Route path="/about" component={About} />
       <Route path="/options" component={Options} />
     </Route>
-    <Route path="/formItems" component={Home}>
-      <IndexRoute component={FormContainer} />
+    <Route path="/list" component={Home}>
+      <IndexRoute component={ListContainer} />
       <Route path="/form" component={AddFormContainer} />
     </Route>
   </Router>
