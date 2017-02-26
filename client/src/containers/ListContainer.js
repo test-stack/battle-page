@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { ListItemManager } from '../components';
+import { ListItemManager, Modal } from '../components';
 
 export default class ListContainer extends Component {
   constructor (props) {
     super(props);
     // The initial state
-    this.state = { list: [] };
+    this.state = { list: [], selectedItem: {} };
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // Once the component mounted it fetches the data from the server
   componentDidMount () {
     this.getList();
+  }
+
+  toggleModal (index) {
+    this.setState({ selectedItem: this.state.list[index]._source });
+    $('#item-modal').modal();
   }
 
   getList () {
@@ -24,10 +30,11 @@ export default class ListContainer extends Component {
   }
 
   render () {
-    const { list } = this.state;
+    const { list, selectedItem } = this.state;
     return (
       <div>
-        <ListItemManager list={list} />
+        <Modal item={selectedItem} />
+        <ListItemManager list={list} toggleModal={this.toggleModal} />
       </div>
     );
   }

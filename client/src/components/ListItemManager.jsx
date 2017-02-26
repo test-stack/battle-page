@@ -4,7 +4,7 @@ import Item from './Item';
 
 export default class ListItemManager extends PureComponent {
   render () {
-    const { list } = this.props;
+    const { list, toggleModal } = this.props;
     return (
       <div className="container scrollable">
         <div className="card">
@@ -21,6 +21,7 @@ export default class ListItemManager extends PureComponent {
                 <Item  {...item}
                   key={item._id}
                   i={i}
+                  toggleModal={toggleModal}
                 />
               );
             })

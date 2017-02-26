@@ -4,6 +4,7 @@ import Form from './Form';
 import Home from './Home';
 import Welcome from './Welcome';
 import ListItemManager from './ListItemManager'
+import Modal from './Modal'
 
 // We export all the components at once
 export {
@@ -12,5 +13,6 @@ export {
   Form,
   Home,
   Welcome,
-  ListItemManager
+  ListItemManager,
+  Modal
 };
