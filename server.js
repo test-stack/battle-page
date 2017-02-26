@@ -100,6 +100,10 @@ router.route('/list/:list_id')
 
 app.use('/api', router);
 
+app.route("*").get((req, res) => {
+  res.sendFile('client/dist/index.html', { root: __dirname });
+});
+
 app.listen(port);
 
 console.log(`listening on port ${port}`);
