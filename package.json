@@ -6,8 +6,8 @@
   "author": "Radim Daniel Panek",
   "license": "MIT",
   "scripts": {
-    "server": "babel-node server.js",
-    "start": "NODE_ENV=development webpack-dev-server",
+    "server": "babel-node app/server.js",
+    "start": "babel-node app/server.js | NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=build webpack"
   },
   "dependencies": {
