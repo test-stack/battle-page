@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class Form extends PureComponent {
   render () {
     return (
-      <div className="card">
+      <div className="card" id="formCard">
         <div className="card-block">
           <h1 className="card-title">Formular</h1>
           <h6 className="card-subtitle mb-2 text-muted">Povine polozky jsou oznaceny hvezdickou</h6>
@@ -60,7 +60,7 @@ export default class Form extends PureComponent {
                 Check me out
               </label>
             </div>
-            <button type="submit" className="btn btn-primary">Odeslat</button>
+            <button type="submit" className="btn btn-primary" id="formButtonSend">Odeslat</button>
           </form>
         </div>
       </div>

@@ -6,14 +6,14 @@ export default class ListItemManager extends PureComponent {
   render () {
     const { list, toggleModal, deleteItem } = this.props;
     return (
-      <div className="container scrollable">
-        <div className="card">
+      <div className="container scrollable" id="listNavBarCards">
+        <div className="card" id="listNavBar">
           <div className="card-block">
-            <Link to="/form" className="btn btn-success">Pridat polozku</Link>
+            <Link to="/form" className="btn btn-success" id="listNavBarAddComponent">Pridat polozku</Link>
           </div>
         </div>
         <br/>
-        <div className="row">
+        <div className="row" id="listItems">
         {
           list
             .map((item, i) => {

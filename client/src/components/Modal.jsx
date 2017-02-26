@@ -9,12 +9,12 @@ export default class Modal extends PureComponent {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" id="modalCloseButtonHeader">
                 <span aria-hidden="true">×</span>
               </button>
-              <h4 className="modal-title" id="email">{`${email}`}</h4>
+              <h4 className="modal-title" id="modalTitle">{`${email}`}</h4>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" id="modalBody">
               <p>Timestamp: {timestamp}</p>
               <hr />
               <p>Textarea: {textarea}</p>
@@ -25,8 +25,8 @@ export default class Modal extends PureComponent {
               <hr />
               <p>Select: {select}</p>
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-warning" data-dismiss="modal">Zavrit</button>
+            <div className="modal-footer" id="modalFooter">
+              <button type="button" className="btn btn-warning" data-dismiss="modal" id="modalCloseButtonFooter">Zavrit</button>
             </div>
           </div>
         </div>
