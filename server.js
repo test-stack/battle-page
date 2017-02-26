@@ -4,16 +4,28 @@ import morgan from 'morgan';
 import elasticsearch from 'elasticsearch';
 import moment from 'moment';
 
+const elasticUri = process.env.ELASTIC_URI || 'http://localhost:9200';
+
 let client = new elasticsearch.Client({
-  host: 'http://192.168.1.138:9200',
+  host: elasticUri,
   log: 'trace',
   apiVersion: '5.0',
-  requestTimeout: 30000,
+  requestTimeout: 10000,
   keepAlive: true,
   maxSockets: 10,
 });
 
-const app = express(); // Our express server!
+client.ping({
+  requestTimeout: 10000
+}, function (error) {
+  if (error) {
+    console.trace('[Elasticsearch] cluster is down!');
+  } else {
+    console.log('[Elasticsearch] Successful connection');
+  }
+});
+
+const app = express();
 const port = process.env.PORT || 8080;
 
 // Body parser and Morgan middleware
