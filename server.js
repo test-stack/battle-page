@@ -5,7 +5,7 @@ import elasticsearch from 'elasticsearch';
 import moment from 'moment';
 
 let client = new elasticsearch.Client({
-  host: 'localhost:9200',
+  host: 'http://192.168.1.138:9200',
   log: 'trace',
   apiVersion: '5.0',
   requestTimeout: 30000,
