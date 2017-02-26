@@ -9,9 +9,10 @@ export default class AddFormContainer extends Component {
     this.state = { newItem: {}};
     // Bind this (context) to the functions to be passed down to the children components
     this.submit = this.submit.bind(this);
-    this.setGame = this.setGame.bind(this);
+    this.setItem = this.setItem.bind(this);
   }
-  submit () {
+  submit (e) {
+    e.preventDefault();
     console.log(this.state.newItem);
     const newItem = this.state.newItem;
     fetch('http://localhost:8080/api/list', {
@@ -23,12 +24,11 @@ export default class AddFormContainer extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      // We go back to the games list view
-      hashHistory.push('/list');
+      console.log(data);
     });
   }
   // We make sure to keep the state up-to-date to the latest input values
-  setGame (event) {
+  setItem (event) {
     let radiobutton;
     if ( document.getElementById('optionsRadios1').checked === true ) {
       radiobutton = 'option1';
@@ -46,6 +46,6 @@ export default class AddFormContainer extends Component {
     this.setState({ newItem });
   }
   render () {
-    return <Form submit={this.submit} setGame={this.setGame} />
+    return <Form submit={this.submit} setItem={this.setItem} />
   }
 }
