@@ -25,6 +25,7 @@ export default class AddFormContainer extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      hashHistory.push('/list');
     });
   }
   // We make sure to keep the state up-to-date to the latest input values
