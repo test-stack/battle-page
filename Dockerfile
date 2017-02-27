@@ -4,7 +4,7 @@ FROM node:7-alpine
 MAINTAINER Radim Daniel Pánek <rdpanek@gmail.com>
 
 # main env
-ENV APP_DIR /opt/battleField
+ENV APP_DIR /opt/battlePage
 
 # Create app directory
 RUN mkdir -p ${APP_DIR}
@@ -16,6 +16,6 @@ RUN apk add --no-cache --virtual .yarn-deps curl gnupg tar && \
     curl -o- -L https://yarnpkg.com/install.sh | sh && \
     ln -s ~/.yarn/bin/yarn /bin/yarn && \
     yarn install && yarn build && \
-    apk del .yarn-deps tar
+    apk del .yarn-deps tar curl gnupg
 
 CMD ["yarn","server"]
