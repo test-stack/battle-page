@@ -18,12 +18,12 @@ export default class Home extends PureComponent {
                   Komponenty
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link to="/form" className="dropdown-item" id="componentFormButton">Formular</Link>
+                  <Link to="/form" className="dropdown-item" id="componentFormButton">Formulář</Link>
                   <Link to="/list" className="dropdown-item" id="componentListButton">List</Link>
                 </div>
               </li>
               <li className="nav-item">
-                <Link to="/options" className="nav-link" id="componentOptionButton">Nastaveni</Link>
+                <Link to="/options" className="nav-link" id="componentOptionButton">Nastavení</Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link" id="componentAboutButton">O Aplikaci</Link>
@@ -31,19 +31,7 @@ export default class Home extends PureComponent {
             </ul>
           </div>
         </nav>
-        <div className="container-fluid">
-          <div className="row top-buffer">
-            <div className="col-md-8" id="pageLeftBlock">{this.props.children}</div>
-            <div className="col-md-4" id="pageRightBlock">
-              <div className="card">
-                <div className="card-block">
-                  <h2 className="card-title">Nastaveni komponenty</h2>
-                  <p className="card-text">Vyberte komponentu ze seznamu.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="container">{this.props.children}</div>
       </div>
     );
   }
