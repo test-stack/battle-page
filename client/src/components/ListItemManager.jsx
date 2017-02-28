@@ -5,6 +5,7 @@ import Item from './Item';
 export default class ListItemManager extends PureComponent {
   render () {
     const { list, toggleModal, deleteItem } = this.props;
+    let countOfItems = 0;
     return (
       <div className="container-fluid">
         <div className="row top-buffer">
@@ -20,6 +21,7 @@ export default class ListItemManager extends PureComponent {
               {
                 list
                   .map((item, i) => {
+                    countOfItems = i;
                     return (
                       <Item  {...item}
                         key={item._id}
@@ -38,7 +40,7 @@ export default class ListItemManager extends PureComponent {
             <div className="card">
               <div className="card-block">
                 <h2 className="card-title">Komponenta List</h2>
-                <p className="card-text">Počet záznamů (<span id="countOfItems">6</span>)</p>
+                <p className="card-text">Počet záznamů <strong><span id="countOfItems">{list.length}</span></strong></p>
               </div>
             </div>
           </div>
