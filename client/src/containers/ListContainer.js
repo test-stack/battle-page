@@ -31,7 +31,6 @@ export default class ListContainer extends Component {
     .then(response => {
       if (response.elastic.found === true)
         this.setState({ list: this.state.list.filter(list => list._id !== _id) });
-      console.log(response);
     });
   }
 
