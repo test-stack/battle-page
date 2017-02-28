@@ -6,7 +6,7 @@ export default class Form extends PureComponent {
     return (
       <div className="container-fluid">
         <div className="row top-buffer">
-          <div className="col-md-12" id="pageBlock">
+          <div className="col-md-8" id="pageBlock">
             <div className="card" id="formCard">
               <div className="card-block">
                 <h1 className="card-title">Formulář</h1>
@@ -63,6 +63,25 @@ export default class Form extends PureComponent {
                   </div>
                   <button type="submit" className="btn btn-primary" id="formButtonSend">Uložit data z formuláře</button>
                 </form>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4" id="pageRightBlock">
+            <div className="card">
+              <div className="card-block">
+                <h2 className="card-title">Komponenta Formulář</h2>
+                <p>
+                  <Link to="/list" className="" id="moveToListComponentButton">Přejít na komponentu List</Link>
+                </p>
+                {this.props.showAlert &&
+                  <div className={ `alert alert-${this.props.successSaved ? 'success' : 'danger'}` } role="alert" id="alertSaved">
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close" id="alertCloseButton">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    { this.props.successSaved && <span>Data byla <strong>úspěšně</strong> uložena do Elasticsearch.</span>}
+                    { this.props.successSaved === false && <span>Data se <strong>nezdařilo</strong> uložit do Elasticsearch.</span>}
+                  </div>
+                }
               </div>
             </div>
           </div>

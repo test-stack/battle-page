@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { hashHistory } from 'react-router';
 import { Form } from '../components';
 
 export default class AddFormContainer extends Component {
   constructor (props) {
     super(props);
     // Initial state
-    this.state = { newItem: {}};
+    this.state = { newItem: {}, showAlert: false, successSaved: false };
     // Bind this (context) to the functions to be passed down to the children components
     this.submit = this.submit.bind(this);
     this.setItem = this.setItem.bind(this);
@@ -24,8 +23,14 @@ export default class AddFormContainer extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      hashHistory.push('/list');
+      if ( data.elastic.created === undefined ) {
+        this.setState({ successSaved: false });
+      } else if (data.elastic.created) {
+        this.setState({ successSaved: true });
+      } else {
+        this.setState({ successSaved: false });
+      }
+      this.setState({ showAlert: true });
     });
   }
   // We make sure to keep the state up-to-date to the latest input values
@@ -47,6 +52,11 @@ export default class AddFormContainer extends Component {
     this.setState({ newItem });
   }
   render () {
-    return <Form submit={this.submit} setItem={this.setItem} />
+    return <Form
+            submit={this.submit}
+            setItem={this.setItem}
+            showAlert={this.state.showAlert}
+            successSaved={this.state.successSaved}
+          />
   }
 }
