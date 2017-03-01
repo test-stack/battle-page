@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import elasticsearch from 'elasticsearch';
 import moment from 'moment';
+import {getTodos, getTodo, addTodo, deleteTodo} from './app/todo';
 
 const elasticUri = process.env.ELASTIC_URI || 'http://localhost:9200';
 
@@ -52,57 +53,36 @@ router.get('/', function(req, res) {
 
 router.route('/list')
   .post((req, res) => {
-    console.log(req.body);
-
-    client.create({
-      index: `battle-page-${moment().format('YYYY.MM.DD')}`,
-      type: 'battle-page',
-      id: new Date().getTime(),
-      body: Object.assign({'timestamp': new Date().toISOString()}, req.body),
-    }, function (error, response) {
-      if (error) res.send(error);
+    addTodo(client, req.body, (error, response) => {
+      if (error) return res.send(error);
       res.json({
         elastic: response
-      });
-    });
+      })
+    })
   })
 
   .get((req, res) => {
-    client.msearch({
-      body: [
-        // query_string query, on index/mytype
-        { index: `battle-page-${moment().format('YYYY.MM.DD')}`, type: 'battle-page' },
-        {}
-      ]
-    }, function (error, response) {
+    getTodos(client, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response
-      });
-    });
-  });
+      })
+    })
+  })
 
 router.route('/list/:list_id')
 
   .get((req, res) => {
-    client.get({
-      index: `battle-page-${moment().format('YYYY.MM.DD')}`,
-      type: 'battle-page',
-      id: req.params.list_id
-    }, function (error, response) {
+    getTodo(client, req.params.list_id, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response
-      });
-    });
+      })
+    })
   })
 
   .delete((req, res) => {
-    client.delete({
-      index: `battle-page-${moment().format('YYYY.MM.DD')}`,
-      type: 'battle-page',
-      id: req.params.list_id
-    }, function (error, response) {
+    deleteTodo(client, req.params.list_id, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response
