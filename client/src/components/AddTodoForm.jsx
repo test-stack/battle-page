@@ -55,7 +55,27 @@ export default class AddTodoForm extends PureComponent {
                       {' '}Zapnout upozornění
                     </label>
                   </div>
-                  <button type="submit" className="btn btn-primary" id="formButtonSend">Uložit Todo</button>
+                  <br/>
+                  <div className="container-fluid" id="formFooter">
+                    <div className="row top-buffer">
+                      <div className="col-md-2">
+                        <button type="submit" className="btn btn-primary" id="saveTodoButton">
+                          { this.props.saveInProgress === true ? `Ukládám ...` : `Uložit Todo`}
+                        </button>
+                      </div>
+                      <div className="col-md-10">
+                        {this.props.showAlert &&
+                          <div className={ `alert alert-${this.props.successSaved ? 'success' : 'danger'}` } role="alert" id="saveBox">
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close" id="alertCloseButton">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            { this.props.successSaved && <span>Todo <strong>úspěšně</strong> uloženo.</span>}
+                            { this.props.successSaved === false && <span>Todo se <strong>nezdařilo</strong> uložit.</span>}
+                          </div>
+                        }
+                      </div>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
@@ -65,17 +85,8 @@ export default class AddTodoForm extends PureComponent {
               <div className="card-block">
                 <h2 className="card-title">Todo Formulář Komponenta </h2>
                 <p>
-                  <Link to="/todo" className="" id="moveToListComponentButton">Zobrazit Todo</Link>
+                  <Link to="/todo" id="todoListComponentButton">Zobrazit Todo</Link>
                 </p>
-                {this.props.showAlert &&
-                  <div className={ `alert alert-${this.props.successSaved ? 'success' : 'danger'}` } role="alert" id="alertSaved">
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close" id="alertCloseButton">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    { this.props.successSaved && <span>Todo <strong>úspěšně</strong> uloženo.</span>}
-                    { this.props.successSaved === false && <span>Todo se <strong>nezdařilo</strong> uložit.</span>}
-                  </div>
-                }
               </div>
             </div>
           </div>

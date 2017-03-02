@@ -4,15 +4,14 @@ import { AddTodoForm } from '../components';
 export default class AddTodoContainer extends Component {
   constructor (props) {
     super(props);
-    // Initial state
-    this.state = { newItem: {}, showAlert: false, successSaved: false };
-    // Bind this (context) to the functions to be passed down to the children components
+
+    this.state = { newItem: {}, showAlert: false, successSaved: false, saveInProgress: false };
     this.submit = this.submit.bind(this);
     this.setItem = this.setItem.bind(this);
   }
   submit (e) {
     e.preventDefault();
-    console.log(this.state.newItem);
+    this.setState({ saveInProgress: true });
     const newItem = this.state.newItem;
     fetch('http://localhost:8080/api/todo', {
       headers: new Headers({
@@ -23,6 +22,7 @@ export default class AddTodoContainer extends Component {
     })
     .then(response => response.json())
     .then(data => {
+      this.setState({ saveInProgress: false });
       if ( data.elastic.created === undefined ) {
         this.setState({ successSaved: false });
       } else if (data.elastic.created === true) {
@@ -56,6 +56,7 @@ export default class AddTodoContainer extends Component {
             submit={this.submit}
             setItem={this.setItem}
             showAlert={this.state.showAlert}
+            saveInProgress={this.state.saveInProgress}
             successSaved={this.state.successSaved}
           />
   }
