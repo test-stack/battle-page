@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 
 export default class Modal extends PureComponent {
   render () {
-    const { _id, _index } = this.props;
-    const { checkbox, email, password, radiobutton, select, textarea, timestamp} = this.props.item;
+    const { _id} = this.props.todo;
+    const { topic, tags, category, shareTodo, notification, description, timestamp} = this.props.todo;
     return(
       <div className="modal fade" id="item-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog" role="document">
@@ -12,21 +12,21 @@ export default class Modal extends PureComponent {
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" id="modalCloseButtonHeader">
                 <span aria-hidden="true">×</span>
               </button>
-              <h4 className="modal-title" id="modalTitle">{`${email}`}</h4>
+              <h4 className="modal-title" id="todoTitle">{`${topic}`}</h4>
             </div>
-            <div className="modal-body" id="modalBody">
-              <p>Timestamp: {timestamp}</p>
+            <div className="modal-body" id="todoBody">
+              <p>Timestamp: <span id="timestamp">{timestamp}</span></p>
               <hr />
-              <p>Textarea: {textarea}</p>
+              <p>Popis: <span id="description">{description}</span></p>
               <hr />
-              <p>Checkbox: {checkbox}</p>
+              <p>Upozornění: <span id="notification">{notification}</span></p>
               <hr />
-              <p>Radiobutton: {radiobutton}</p>
+              <p>Sdílení: <span id="shareTodo">{shareTodo}</span></p>
               <hr />
-              <p>Select: {select}</p>
+              <p>Kategorie: <span id="category">{category}</span></p>
             </div>
             <div className="modal-footer" id="modalFooter">
-              <button type="button" className="btn btn-warning" data-dismiss="modal" id="modalCloseButtonFooter">Zavrit</button>
+              <button type="button" className="btn btn-warning" data-dismiss="modal" id="modalCloseButtonFooter">Zavřít</button>
             </div>
           </div>
         </div>

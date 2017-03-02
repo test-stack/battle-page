@@ -1,8 +1,7 @@
-import AddFormContainer from './AddFormContainer';
-import ListContainer from './ListContainer';
+import AddTodoContainer from './AddTodoContainer';
+import TodoContainer from './TodoContainer';
 
-// We export all the containers at once
 export {
-  AddFormContainer,
-  ListContainer
+  AddTodoContainer,
+  TodoContainer
 };

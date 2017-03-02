@@ -1,18 +1,18 @@
 import About from './About';
 import Options from './Options';
-import Form from './Form';
-import Home from './Home';
+import AddTodoForm from './AddTodoForm';
+import Layout from './Layout';
 import Welcome from './Welcome';
-import ListItemManager from './ListItemManager'
+import TodosContainer from './TodosContainer'
 import Modal from './Modal'
 
 // We export all the components at once
 export {
   About,
   Options,
-  Form,
-  Home,
+  AddTodoForm,
+  Layout,
   Welcome,
-  ListItemManager,
+  TodosContainer,
   Modal
 };

@@ -51,7 +51,7 @@ router.get('/', function(req, res) {
     res.json({ message: 'Api is live!' });
 });
 
-router.route('/list')
+router.route('/todo')
   .post((req, res) => {
     addTodo(client, req.body, (error, response) => {
       if (error) return res.send(error);
@@ -70,10 +70,10 @@ router.route('/list')
     })
   })
 
-router.route('/list/:list_id')
+router.route('/todo/:todo_id')
 
   .get((req, res) => {
-    getTodo(client, req.params.list_id, (error, response) => {
+    getTodo(client, req.params.todo_id, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response
@@ -82,7 +82,7 @@ router.route('/list/:list_id')
   })
 
   .delete((req, res) => {
-    deleteTodo(client, req.params.list_id, (error, response) => {
+    deleteTodo(client, req.params.todo_id, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response

@@ -10,8 +10,24 @@ export const addTodo = (client, todo, cb) => {
 export const getTodos = (client, cb) => {
   client.msearch({
     body: [
-      { index: 'battle-page-form', type: 'battle-page-form' },
+      { index: 'battle-page-todolist', type: 'battle-page-todolist' },
       {}
     ]
+  }, cb);
+}
+
+export const getTodo = (client, todoId, cb) => {
+  client.get({
+    index: 'battle-page-todolist',
+    type: 'battle-page-todolist',
+    id: todoId
+  }, cb);
+}
+
+export const deleteTodo = (client, todoId, cb) => {
+  client.delete({
+    index: 'battle-page-todolist',
+    type: 'battle-page-todolist',
+    id: todoId
   }, cb);
 }

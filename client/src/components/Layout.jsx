@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 
-export default class Home extends PureComponent {
+export default class Layout extends PureComponent {
   render () {
     return (
       <div>
@@ -18,8 +18,7 @@ export default class Home extends PureComponent {
                   Komponenty
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link to="/form" className="dropdown-item" id="componentFormButton">Formulář</Link>
-                  <Link to="/list" className="dropdown-item" id="componentListButton">List</Link>
+                  <Link to="/todo" className="dropdown-item" id="componentListButton">Todo</Link>
                 </div>
               </li>
               <li className="nav-item">

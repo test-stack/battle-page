@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form } from '../components';
+import { AddTodoForm } from '../components';
 
-export default class AddFormContainer extends Component {
+export default class AddTodoContainer extends Component {
   constructor (props) {
     super(props);
     // Initial state
@@ -14,7 +14,7 @@ export default class AddFormContainer extends Component {
     e.preventDefault();
     console.log(this.state.newItem);
     const newItem = this.state.newItem;
-    fetch('http://localhost:8080/api/list', {
+    fetch('http://localhost:8080/api/todo', {
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
@@ -25,7 +25,7 @@ export default class AddFormContainer extends Component {
     .then(data => {
       if ( data.elastic.created === undefined ) {
         this.setState({ successSaved: false });
-      } else if (data.elastic.created) {
+      } else if (data.elastic.created === true) {
         this.setState({ successSaved: true });
       } else {
         this.setState({ successSaved: false });
@@ -33,26 +33,26 @@ export default class AddFormContainer extends Component {
       this.setState({ showAlert: true });
     });
   }
-  // We make sure to keep the state up-to-date to the latest input values
+
   setItem (event) {
-    let radiobutton;
+    let shareTodo;
     if ( document.getElementById('optionsRadios1').checked === true ) {
-      radiobutton = 'option1';
+      shareTodo = 'shareOff';
     } else {
-      radiobutton = 'option2';
+      shareTodo = 'shareOn';
     }
     const newItem = {
-      email: document.getElementById('email').value,
-      password: document.getElementById('password').value,
-      select: document.getElementById('select').value,
-      radiobutton: radiobutton,
-      checkbox: document.getElementById('checkbox').checked,
-      textarea: document.getElementById('textarea').value
+      topic: document.getElementById('topic').value,
+      tags: document.getElementById('tags').value,
+      category: document.getElementById('category').value,
+      shareTodo: shareTodo,
+      notification: document.getElementById('notification').checked,
+      description: document.getElementById('description').value
     };
     this.setState({ newItem });
   }
   render () {
-    return <Form
+    return <AddTodoForm
             submit={this.submit}
             setItem={this.setItem}
             showAlert={this.state.showAlert}
