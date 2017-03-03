@@ -64,13 +64,18 @@ export default class AddTodoForm extends PureComponent {
                         </button>
                       </div>
                       <div className="col-md-10">
-                        {this.props.showAlert &&
+                        { (this.props.showAlert && !this.props.validationError) &&
                           <div className={ `alert alert-${this.props.successSaved ? 'success' : 'danger'}` } role="alert" id="saveBox">
                             <button type="button" className="close" data-dismiss="alert" aria-label="Close" id="alertCloseButton">
                               <span aria-hidden="true">&times;</span>
                             </button>
                             { this.props.successSaved && <span>Todo <strong>úspěšně</strong> uloženo.</span>}
                             { this.props.successSaved === false && <span>Todo se <strong>nezdařilo</strong> uložit.</span>}
+                          </div>
+                        }
+                        { (this.props.showAlert && this.props.validationError) &&
+                          <div className="alert alert-danger" role="alert" id="validationErrorBox">
+                            Todo nelze uložit. Pole <strong>Téma</strong> musí být vyplněno.
                           </div>
                         }
                       </div>

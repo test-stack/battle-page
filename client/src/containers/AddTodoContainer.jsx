@@ -5,20 +5,28 @@ export default class AddTodoContainer extends Component {
   constructor (props) {
     super(props);
 
-    this.state = { newItem: {}, showAlert: false, successSaved: false, saveInProgress: false };
+    this.state = { newItem: {}, showAlert: false, successSaved: false, saveInProgress: false, validationError: false };
     this.submit = this.submit.bind(this);
     this.setItem = this.setItem.bind(this);
   }
+
   submit (e) {
     e.preventDefault();
+    const newTodo = this.state.newItem;
+
+    if ( newTodo.topic === undefined ) {
+      this.setState({ showAlert: true });
+      this.setState({ validationError: true });
+      return;
+    }
+    this.setState({ validationError: false });
     this.setState({ saveInProgress: true });
-    const newItem = this.state.newItem;
     fetch('http://localhost:8080/api/todo', {
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
       method: 'POST',
-      body: JSON.stringify(newItem)
+      body: JSON.stringify(newTodo)
     })
     .then(response => response.json())
     .then(data => {
@@ -57,6 +65,7 @@ export default class AddTodoContainer extends Component {
             setItem={this.setItem}
             showAlert={this.state.showAlert}
             saveInProgress={this.state.saveInProgress}
+            validationError={this.state.validationError}
             successSaved={this.state.successSaved}
           />
   }
