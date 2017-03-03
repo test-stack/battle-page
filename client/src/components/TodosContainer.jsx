@@ -40,7 +40,11 @@ export default class TodosContainer extends PureComponent {
             <div className="card">
               <div className="card-block">
                 <h2 className="card-title">Todo komponenta</h2>
-                <p className="card-text"><strong><span id="countOfItems">{todos.length}</span></strong> záznamů</p>
+                <p className="card-text"><strong><span id="countOfTodos">{todos.length}</span></strong>{' '}
+                {todos.length == 1 && `záznam`}
+                {(todos.length >= 2 && todos.length <= 4) && `záznamy`}
+                {(todos.length >= 5 || todos.length == 0) && `záznamů`}
+                </p>
               </div>
             </div>
           </div>
