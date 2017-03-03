@@ -6,7 +6,7 @@ export default class Todo extends PureComponent {
     const { _id, i, _index, toggleModal, deleteTodo } = this.props;
     const { topic, tags, category, shareTodo, notification, description, timestamp} = this.props._source;
     return (
-      <div className="col-sm-6" id={`todo${i}`}>
+      <div className="col-sm-4" id={`todo${i}`}>
         <div className="card">
           <div className="card-block">
             <h3 className="card-title" id="todoTitle">{topic}</h3>
