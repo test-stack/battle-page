@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 
 export default class Modal extends PureComponent {
   render () {
+    console.log(this.props.todo);
     const { _id} = this.props.todo;
     const { topic, tags, category, shareTodo, notification, description, timestamp} = this.props.todo;
     return(
@@ -19,9 +20,19 @@ export default class Modal extends PureComponent {
               <hr />
               <p>Popis: <span id="description">{description}</span></p>
               <hr />
-              <p>Upozornění: <span id="notification">{notification}</span></p>
+              <p>Tagy: <span id="tags">{tags}</span></p>
               <hr />
-              <p>Sdílení: <span id="shareTodo">{shareTodo}</span></p>
+              <p>Upozornění: <span className={ `badge badge-${notification ? 'success' : 'default'}` }>
+                { notification && <span id="notification">Zapnuto</span> }
+                { !notification && <span id="notification">Vypnuto</span> }
+              </span>
+              </p>
+              <hr />
+              <p>Sdílení: <span className={ `badge badge-${shareTodo == "shareOn" ? 'success' : 'default'}` }>
+                { shareTodo == "shareOn" && <span id="shareTodo">Zapnuto</span> }
+                { shareTodo == "shareOff" && <span id="shareTodo">Vypnuto</span> }
+              </span>
+              </p>
               <hr />
               <p>Kategorie: <span id="category">{category}</span></p>
             </div>
