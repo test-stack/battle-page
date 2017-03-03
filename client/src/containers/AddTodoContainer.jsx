@@ -5,14 +5,14 @@ export default class AddTodoContainer extends Component {
   constructor (props) {
     super(props);
 
-    this.state = { newItem: {}, showAlert: false, successSaved: false, saveInProgress: false, validationError: false };
+    this.state = { newTodo: {}, showAlert: false, successSaved: false, saveInProgress: false, validationError: false };
     this.submit = this.submit.bind(this);
     this.setItem = this.setItem.bind(this);
   }
 
   submit (e) {
     e.preventDefault();
-    const newTodo = this.state.newItem;
+    const newTodo = this.state.newTodo;
 
     if ( newTodo.topic === undefined ) {
       this.setState({ showAlert: true });
@@ -34,6 +34,7 @@ export default class AddTodoContainer extends Component {
       if ( data.elastic.created === undefined ) {
         this.setState({ successSaved: false });
       } else if (data.elastic.created === true) {
+        localStorage.clear();
         this.setState({ successSaved: true });
       } else {
         this.setState({ successSaved: false });
@@ -49,7 +50,7 @@ export default class AddTodoContainer extends Component {
     } else {
       shareTodo = 'shareOn';
     }
-    const newItem = {
+    const newTodo = {
       topic: document.getElementById('topic').value,
       tags: document.getElementById('tags').value,
       category: document.getElementById('category').value,
@@ -57,7 +58,8 @@ export default class AddTodoContainer extends Component {
       notification: document.getElementById('notification').checked,
       description: document.getElementById('description').value
     };
-    this.setState({ newItem });
+    localStorage.setItem('todos', JSON.stringify(newTodo));
+    this.setState({ newTodo });
   }
   render () {
     return <AddTodoForm
