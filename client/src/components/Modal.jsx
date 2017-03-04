@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 
 export default class Modal extends PureComponent {
   render () {
-    console.log(this.props.todo);
     const { _id} = this.props.todo;
     const { topic, tags, category, shareTodo, notification, description, timestamp} = this.props.todo;
     return(
