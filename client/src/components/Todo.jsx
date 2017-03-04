@@ -10,6 +10,7 @@ export default class Todo extends PureComponent {
         <div className="card">
           <div className="card-block">
             <h3 className="card-title" id="todoTitle">{topic}</h3>
+            <h6 className="card-subtitle mb-2 text-muted" id="orderCard">{i+1}#</h6>
             <p className="card-text" id="todoText">{`${description.substring(0, 150)} ...`}</p>
             <div className="btn-group btn-group-sm" role="group" aria-label="...">
               <button className="btn btn-danger" role="button" id="todoRemoveButton" onClick={() => deleteTodo(_id)}>Smazat Todo</button>

@@ -11,7 +11,7 @@ export const getTodos = (client, cb) => {
   client.msearch({
     body: [
       { index: 'battle-page-todolist', type: 'battle-page-todolist' },
-      { size: 1000, query: { match_all: {} } }
+      { from: 0, size: 1000, query: { match_all: {} } }
     ]
   }, cb);
 }
