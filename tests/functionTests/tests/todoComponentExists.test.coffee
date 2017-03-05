@@ -1,6 +1,6 @@
 module.exports = ->
 
-  describe 'Battle Page homepage title', ->
+  describe 'Battle Page | Todo component exist', ->
 
     BattlePage.open()
 
@@ -10,4 +10,5 @@ module.exports.tags = [
   'battlePage'
   'components'
   'todo'
+  'exist'
 ]

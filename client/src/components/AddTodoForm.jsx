@@ -75,7 +75,7 @@ export default class AddTodoForm extends PureComponent {
                         }
                         { (this.props.showAlert && this.props.validationError) &&
                           <div className="alert alert-danger" role="alert" id="validationErrorBox">
-                            Todo nelze uložit. Pole <strong>Téma</strong> musí být vyplněno.
+                            <strong>Todo nelze uložit</strong>. Pole Téma musí být vyplněno.
                           </div>
                         }
                       </div>

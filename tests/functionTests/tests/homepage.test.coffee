@@ -8,4 +8,5 @@ module.exports.tags = [
   'battlePage'
   'title'
   'homepage'
+  'exist'
 ]

@@ -24,7 +24,7 @@ export default class TodosContainer extends PureComponent {
             <div className="container scrollable" id="listNavBarCards">
               <div className="card" id="listNavBar">
                 <div className="card-block">
-                  <Link to="/todo-form" className="btn btn-success" id="listNavBarAddComponent">Přidat Todo</Link>
+                  <Link to="/todo-form" className="btn btn-success" id="listNavBarAddTodoButton">Přidat Todo</Link>
                 </div>
               </div>
               <br/>
