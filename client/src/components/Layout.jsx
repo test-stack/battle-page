@@ -13,12 +13,12 @@ export default class Layout extends PureComponent {
 
           <div className="collapse navbar-collapse" id="navbarToggleExternalContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="componentListButton">
+              <li className="nav-item dropdown" id="componentsList">
+                <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Komponenty
                 </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <Link to="/todo" className="dropdown-item" id="componentListButton">Todo</Link>
+                <div className="dropdown-menu" aria-labelledby="componentTodoButton">
+                  <Link to="/todo" className="dropdown-item" id="navBarTodoButton">Todo</Link>
                 </div>
               </li>
               <li className="nav-item">
