@@ -94,7 +94,7 @@ export default class TodosContainer extends PureComponent {
                 { pagination &&
                   <div className="form-group">
                     <br/>
-                    <label htmlFor="inputPassword4">Počet karet na stránce:</label>
+                    <label htmlFor="inputPassword4">Maximální počet karet na stránce:</label>
                     <input type="text" className="form-control form-control-sm" id="sizePagination" defaultValue={paginationSize} onChange={() => this.props.setPaginationSize()}/>
                   </div>
                 }

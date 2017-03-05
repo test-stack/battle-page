@@ -35,6 +35,10 @@ export default class TodoContainer extends Component {
     .then(response => {
       if (response.elastic.found === true)
         this.setState({ todos: this.state.todos.filter(todo => todo._id !== _id) });
+        this.setState({ totalTodos: (this.state.totalTodos - 1)})
+    })
+    .then(() => {
+      this.updateSizePagination();
     });
   }
 
@@ -50,7 +54,16 @@ export default class TodoContainer extends Component {
         this.setState({ todos: data.elastic.responses[0].hits.hits })
         this.setState({ totalTodos: data.elastic.responses[0].hits.total })
       }
+    })
+    .then(() => {
+      this.updateSizePagination();
     });
+  }
+
+  updateSizePagination () {
+    if ( this.state.totalTodos < this.state.paginationSize ) {
+      this.setState({ paginationSize: this.state.totalTodos })
+    }
   }
 
   togglePagination (togglePagination) {
