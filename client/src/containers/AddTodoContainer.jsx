@@ -5,16 +5,27 @@ export default class AddTodoContainer extends Component {
   constructor (props) {
     super(props);
 
-    this.state = { newItem: {}, showAlert: false, successSaved: false, saveInProgress: false, validationError: false };
+    this.state = {
+      showAlert: false,
+      successSaved: false,
+      saveInProgress: false,
+      validationError: false,
+      topic: '',
+      tags: '',
+      category: '',
+      shareTodo: 'shareOff',
+      notification: false,
+      description: ''
+    };
     this.submit = this.submit.bind(this);
     this.setItem = this.setItem.bind(this);
   }
 
   submit (e) {
     e.preventDefault();
-    const newTodo = this.state.newItem;
+    let newTodo = this.state.newTodo;
 
-    if ( newTodo.topic === undefined ) {
+    if ( this.state.topic.length == 0 ) {
       this.setState({ showAlert: true });
       this.setState({ validationError: true });
       return;
@@ -26,7 +37,14 @@ export default class AddTodoContainer extends Component {
         'Content-Type': 'application/json'
       }),
       method: 'POST',
-      body: JSON.stringify(newTodo)
+      body: JSON.stringify({
+        topic: this.state.topic,
+        tags: this.state.tags,
+        category: this.state.category,
+        shareTodo: this.state.shareTodo,
+        notification: this.state.notification,
+        description: this.state.description
+      })
     })
     .then(response => response.json())
     .then(data => {
@@ -43,21 +61,16 @@ export default class AddTodoContainer extends Component {
   }
 
   setItem (event) {
-    let shareTodo;
     if ( document.getElementById('optionsRadios1').checked === true ) {
-      shareTodo = 'shareOff';
+      this.setState({ shareTodo: 'shareOff' });
     } else {
-      shareTodo = 'shareOn';
+      this.setState({ shareTodo: 'shareOn' });
     }
-    const newItem = {
-      topic: document.getElementById('topic').value,
-      tags: document.getElementById('tags').value,
-      category: document.getElementById('category').value,
-      shareTodo: shareTodo,
-      notification: document.getElementById('notification').checked,
-      description: document.getElementById('description').value
-    };
-    this.setState({ newItem });
+    this.setState({ topic: document.getElementById('topic').value });
+    this.setState({ tags: document.getElementById('tags').value });
+    this.setState({ category: document.getElementById('category').value });
+    this.setState({ notification: document.getElementById('notification').checked });
+    this.setState({ description: document.getElementById('description').value });
   }
   render () {
     return <AddTodoForm
