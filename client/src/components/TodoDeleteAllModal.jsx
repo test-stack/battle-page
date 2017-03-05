@@ -8,7 +8,7 @@ export default class TodoDeleteAllModal extends PureComponent {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Smazat všechny Todo</h5>
+              <h5 className="modal-title" id="titleModal">Smazat všechny Todo</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -17,8 +17,8 @@ export default class TodoDeleteAllModal extends PureComponent {
               Opravdu chcete smazat všechny todo?
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Ne, zavřít</button>
-              <button type="button" className="btn btn-danger" onClick={() => this.props.deleteAllTodos()}>Ano, smazat</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal" id="noCloseButton">Ne, zavřít</button>
+              <button type="button" className="btn btn-danger" onClick={() => this.props.deleteAllTodos()} id="yesDeleteAllButton">Ano, smazat</button>
             </div>
           </div>
         </div>

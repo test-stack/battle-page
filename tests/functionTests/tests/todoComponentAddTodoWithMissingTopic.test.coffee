@@ -21,4 +21,5 @@ module.exports.tags = [
   'todo'
   'addForm'
   'saveUnsuccessful'
+  'fast'
 ]

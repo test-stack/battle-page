@@ -4,7 +4,7 @@ module.exports = ->
 
   describe 'Battle Page | Todo | Add todo', ->
 
-    for i in [0..20]
+    for i in [0..2]
 
       BattlePage.open()
 
@@ -26,4 +26,5 @@ module.exports.tags = [
   'addForm'
   'saveSuccessful'
   'batchAddTodos'
+  'slow'
 ]
