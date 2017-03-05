@@ -3,10 +3,10 @@ import Options from './Options';
 import AddTodoForm from './AddTodoForm';
 import Layout from './Layout';
 import Welcome from './Welcome';
-import TodosContainer from './TodosContainer'
-import TodoModal from './TodoModal'
+import TodosContainer from './TodosContainer';
+import TodoModal from './TodoModal';
+import TodoDeleteAllModal from './TodoDeleteAllModal';
 
-// We export all the components at once
 export {
   About,
   Options,
@@ -14,5 +14,6 @@ export {
   Layout,
   Welcome,
   TodosContainer,
-  TodoModal
+  TodoModal,
+  TodoDeleteAllModal
 };

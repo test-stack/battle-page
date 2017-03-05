@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { TodosContainer, TodoModal } from '../components';
+import { TodosContainer, TodoModal, TodoDeleteAllModal } from '../components';
 
 export default class TodoContainer extends Component {
   constructor (props) {
     super(props);
-    this.state = { todos: [], selectedTodo: {}, paginationFrom: 0, paginationSize: 10, pagination: true };
+    this.state = { todos: [], selectedTodo: {}, paginationSize: 10, totalTodos: 0, pagination: true };
     this.togglePagination = this.togglePagination.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
+    this.deleteAllTodos = this.deleteAllTodos.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.setPaginationSize = this.setPaginationSize.bind(this);
   }
@@ -24,6 +26,10 @@ export default class TodoContainer extends Component {
     $('#todo-modal').modal();
   }
 
+  toggleDeleteModal () {
+    $('#todo-delete-modal').modal();
+  }
+
   deleteTodo (_id) {
     fetch(`http://localhost:8080/api/todo/${_id}`, {
       headers: new Headers({
@@ -38,6 +44,23 @@ export default class TodoContainer extends Component {
         this.setState({ totalTodos: (this.state.totalTodos - 1)})
     })
     .then(() => {
+      this.updateSizePagination();
+    });
+  }
+
+  deleteAllTodos () {
+    $('#todo-delete-modal').modal('hide');
+    fetch('http://localhost:8080/api/todo', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.setState({ totalTodos: 0 })
+      this.setState({ todos: []});
       this.updateSizePagination();
     });
   }
@@ -80,10 +103,12 @@ export default class TodoContainer extends Component {
     const { todos, selectedTodo, paginationSize, pagination} = this.state;
     return (
       <div>
+        <TodoDeleteAllModal deleteAllTodos={this.deleteAllTodos} />
         <TodoModal todo={selectedTodo} />
         <TodosContainer
           todos={todos}
           toggleModal={this.toggleModal}
+          toggleDeleteModal={this.toggleDeleteModal}
           deleteTodo={this.deleteTodo}
           paginationSize={paginationSize}
           pagination={pagination}

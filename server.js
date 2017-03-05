@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import elasticsearch from 'elasticsearch';
 import moment from 'moment';
-import {getTodos, getTodo, addTodo, deleteTodo} from './app/todo';
+import {getTodos, getTodo, addTodo, deleteTodo, deleteAllTodos} from './app/todo';
 
 const elasticUri = process.env.ELASTIC_URI || 'http://localhost:9200';
 
@@ -63,6 +63,15 @@ router.route('/todo')
 
   .get((req, res) => {
     getTodos(client, (error, response) => {
+      if (error) res.send(error);
+      res.json({
+        elastic: response
+      })
+    })
+  })
+
+  .delete((req, res) => {
+    deleteAllTodos(client, (error, response) => {
       if (error) res.send(error);
       res.json({
         elastic: response

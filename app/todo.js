@@ -31,3 +31,9 @@ export const deleteTodo = (client, todoId, cb) => {
     id: todoId
   }, cb);
 }
+
+export const deleteAllTodos = (client, cb) => {
+  client.indices.delete({
+    index: 'battle-page-todolist'
+  }, cb);
+}

@@ -15,7 +15,7 @@ export default class TodosContainer extends PureComponent {
   }
 
   render () {
-    const { todos, toggleModal, deleteTodo, paginationSize, pagination} = this.props;
+    const { todos, toggleModal, toggleDeleteModal, deleteTodo, paginationSize, pagination} = this.props;
     let _pages = 0, _todoCounter = 0;
     return (
       <div className="container-fluid">
@@ -96,6 +96,15 @@ export default class TodosContainer extends PureComponent {
                     <br/>
                     <label htmlFor="inputPassword4">Maximální počet karet na stránce:</label>
                     <input type="text" className="form-control form-control-sm" id="sizePagination" defaultValue={paginationSize} onChange={() => this.props.setPaginationSize()}/>
+                  </div>
+                }
+                { todos.length > 1 &&
+                  <div>
+                    <hr />
+                    <h3>Smazat všechny Todo</h3>
+                    <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      <button type="button" id="showTodosDeleteModalButton" className="btn btn-secondary" onClick={() => this.props.toggleDeleteModal()}>Smazat</button>
+                    </div>
                   </div>
                 }
               </div>
