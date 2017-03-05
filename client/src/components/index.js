@@ -4,7 +4,7 @@ import AddTodoForm from './AddTodoForm';
 import Layout from './Layout';
 import Welcome from './Welcome';
 import TodosContainer from './TodosContainer'
-import Modal from './Modal'
+import TodoModal from './TodoModal'
 
 // We export all the components at once
 export {
@@ -14,5 +14,5 @@ export {
   Layout,
   Welcome,
   TodosContainer,
-  Modal
+  TodoModal
 };

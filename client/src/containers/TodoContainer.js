@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TodosContainer, Modal } from '../components';
+import { TodosContainer, TodoModal } from '../components';
 
 export default class TodoContainer extends Component {
   constructor (props) {
@@ -21,7 +21,7 @@ export default class TodoContainer extends Component {
       this.state.todos[index]._source
     );
     this.setState({ selectedTodo: _selectedTodo });
-    $('#item-modal').modal();
+    $('#todo-modal').modal();
   }
 
   deleteTodo (_id) {
@@ -80,7 +80,7 @@ export default class TodoContainer extends Component {
     const { todos, selectedTodo, paginationSize, pagination} = this.state;
     return (
       <div>
-        <Modal todo={selectedTodo} />
+        <TodoModal todo={selectedTodo} />
         <TodosContainer
           todos={todos}
           toggleModal={this.toggleModal}
