@@ -14,7 +14,7 @@ docker build -t rdpanek/battle-page:1.0 .
 ## Run application stack
 Run docker images with Elasticsearch
 ```
-docker run --name elastic -p 9200:9200 -d elasticsearch:5.0 -Etransport.host=0.0.0.0
+docker run --name elastic -v "$PWD/data":/usr/share/elasticsearch/data -p 9200:9200 -p 9300:9300 -d elasticsearch:5.0 -Etransport.host=0.0.0.0
 ```
 Run docker images with Kibana
 ```
