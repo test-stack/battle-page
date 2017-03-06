@@ -31,7 +31,7 @@ export default class TodoContainer extends Component {
   }
 
   deleteTodo (_id) {
-    fetch(`http://localhost:8080/api/todo/${_id}`, {
+    fetch(`api/todo/${_id}`, {
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
@@ -50,7 +50,7 @@ export default class TodoContainer extends Component {
 
   deleteAllTodos () {
     $('#todo-delete-modal').modal('hide');
-    fetch('http://localhost:8080/api/todo', {
+    fetch('api/todo', {
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
@@ -66,7 +66,7 @@ export default class TodoContainer extends Component {
   }
 
   getTodos () {
-    fetch('http://localhost:8080/api/todo', {
+    fetch('/api/todo', {
       headers: new Headers({
         'Content-Type': 'application/json'
       })

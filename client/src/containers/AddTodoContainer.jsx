@@ -32,7 +32,7 @@ export default class AddTodoContainer extends Component {
     }
     this.setState({ validationError: false });
     this.setState({ saveInProgress: true });
-    fetch('http://localhost:8080/api/todo', {
+    fetch('api/todo', {
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
