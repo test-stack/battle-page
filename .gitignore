@@ -45,3 +45,6 @@ node_modules
 # Frontend
 client/dist/bundle.js
 client/dist/bundle.js.map
+
+# Elastic
+data/
