@@ -50,3 +50,11 @@ java -Dwebdriver.chrome.driver=chromedriver2.27 -jar selenium-server-standalone-
 kubectl create -f kubernetes/battle.yml
 minikube service battle --url
 ```
+
+## Kubernetes Dashboard
+
+```
+git clone https://github.com/kubernetes/heapster/
+kubectl create -f heapster/deploy/kube-config/influxdb/
+minikube dashboard
+```
