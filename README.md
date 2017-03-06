@@ -32,3 +32,21 @@ yarn server
 ```
 
 In dev mode `yarn start`
+
+## Harness
+```
+docker run -it --name harness -v `PWD`/tests/functionTests/:/home/harness rdpanek/docker_harness:1.6
+docker attach harness
+cd /home/harness && harness 'batchAddTodos' -c localChrome -t 25000 -b
+```
+
+## Selenium local
+```
+java -Dwebdriver.chrome.driver=chromedriver2.27 -jar selenium-server-standalone-3.2.0.jar
+```
+
+## Kubernetes
+```
+kubectl create -f kubernetes/battle.yml
+minikube service battle --url
+```
