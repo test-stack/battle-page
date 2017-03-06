@@ -9,12 +9,12 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="server.url" elementType="Argument">
             <stringProp name="Argument.name">server.url</stringProp>
-            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.value">192.168.99.100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="server.port" elementType="Argument">
             <stringProp name="Argument.name">server.port</stringProp>
-            <stringProp name="Argument.value">8080</stringProp>
+            <stringProp name="Argument.value">32685</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="server.protocol" elementType="Argument">
@@ -49,14 +49,14 @@
       <hashTree/>
       <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="Todo component" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="Threads initial delay">0</stringProp>
         <stringProp name="Start users count">1</stringProp>
         <stringProp name="Start users count burst">0</stringProp>
         <stringProp name="Start users period">30</stringProp>
         <stringProp name="Stop users count">1</stringProp>
         <stringProp name="Stop users period">30</stringProp>
-        <stringProp name="flighttime">100</stringProp>
+        <stringProp name="flighttime">400</stringProp>
         <stringProp name="rampUp"></stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -125,7 +125,7 @@
           </ResultAction>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="saveNewTodo" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="saveNewTodo" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -202,7 +202,7 @@ if (saveTodoCreated == &quot;true&quot; ) {
           </BeanShellAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getAllTodos" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getAllTodos" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -310,7 +310,7 @@ if (0 &lt; totalHits) {
         <stringProp name="filename">results/20170306-010132-report.jtl</stringProp>
       </cz.etnetera.jmeter.listener.ControllerResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -343,12 +343,12 @@ if (0 &lt; totalHits) {
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
         <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="elasticsearchCluster" elementType="Argument">
               <stringProp name="Argument.name">elasticsearchCluster</stringProp>
-              <stringProp name="Argument.value">tea.comm.equabank.loc:9300</stringProp>
+              <stringProp name="Argument.value">localhost:9300</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="indexName" elementType="Argument">
@@ -368,12 +368,12 @@ if (0 &lt; totalHits) {
             </elementProp>
             <elementProp name="release" elementType="Argument">
               <stringProp name="Argument.name">release</stringProp>
-              <stringProp name="Argument.value">9.0</stringProp>
+              <stringProp name="Argument.value">1.0</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="testPlanName" elementType="Argument">
               <stringProp name="Argument.name">testPlanName</stringProp>
-              <stringProp name="Argument.value">dataServerRC</stringProp>
+              <stringProp name="Argument.value">battlePage</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="verbose" elementType="Argument">
