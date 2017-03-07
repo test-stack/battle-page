@@ -4,13 +4,14 @@ import { TodosContainer, TodoModal, TodoDeleteAllModal } from '../components';
 export default class TodoContainer extends Component {
   constructor (props) {
     super(props);
-    this.state = { todos: [], selectedTodo: {}, paginationSize: 10, totalTodos: 0, pagination: true };
+    this.state = { todos: [], selectedTodo: {}, paginationSize: 10, totalTodos: 0, pagination: true, searchBar: '' };
     this.togglePagination = this.togglePagination.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
     this.deleteAllTodos = this.deleteAllTodos.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.setPaginationSize = this.setPaginationSize.bind(this);
+    this.setSearchBar = this.setSearchBar.bind(this);
   }
 
   componentDidMount () {
@@ -99,8 +100,13 @@ export default class TodoContainer extends Component {
     this.setState({ paginationSize: _paginationSize });
   }
 
+  setSearchBar (event) {
+    this.setState({ searchBar: event.target.value });
+    console.log(this.state.searchBar);
+  }
+
   render () {
-    const { todos, selectedTodo, paginationSize, pagination} = this.state;
+    const { todos, selectedTodo, paginationSize, pagination, searchBar } = this.state;
     return (
       <div>
         <TodoDeleteAllModal deleteAllTodos={this.deleteAllTodos} />
@@ -114,6 +120,8 @@ export default class TodoContainer extends Component {
           pagination={pagination}
           togglePagination={this.togglePagination}
           setPaginationSize={this.setPaginationSize}
+          searchBar={searchBar}
+          setSearchBar={this.setSearchBar}
         />
       </div>
     );

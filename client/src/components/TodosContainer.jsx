@@ -15,7 +15,7 @@ export default class TodosContainer extends PureComponent {
   }
 
   render () {
-    const { todos, toggleModal, toggleDeleteModal, deleteTodo, paginationSize, pagination} = this.props;
+    const { todos, toggleModal, toggleDeleteModal, deleteTodo, paginationSize, pagination, searchBar, setSearchBar} = this.props;
     let _pages = 0, _todoCounter = 0;
     return (
       <div className="container-fluid">
@@ -24,13 +24,21 @@ export default class TodosContainer extends PureComponent {
             <div className="container scrollable" id="listNavBarCards">
               <div className="card" id="listNavBar">
                 <div className="card-block">
-                  <Link to="/todo-form" className="btn btn-success" id="listNavBarAddTodoButton">Přidat Todo</Link>
+                  <div className="row">
+                    <div className="col-2">
+                      <Link to="/todo-form" className="btn btn-success btn-lg" id="listNavBarAddTodoButton">Přidat Todo</Link>
+                    </div>
+                    <div className="col-10">
+                      <input type="todo" className="form-control form-control-lg" id="todoSearchBar" placeholder="Vyhledejte todo dle názvu" onKeyUp={setSearchBar} />
+                    </div>
+                  </div>
                 </div>
               </div>
               <br/>
               <div className="row" id="todosList">
               {
                 todos
+                  .filter(todo => todo._source.topic.includes(searchBar))
                   .map((todo, i) => {
                     if ( !pagination || ( pagination && (i >= (this.state.page*paginationSize-paginationSize) && i < this.state.page*paginationSize))) {
                       return (
@@ -49,7 +57,8 @@ export default class TodosContainer extends PureComponent {
                 <div className="btn-toolbar justify-content-center" role="toolbar" aria-label="Basic example">
                   <div className="btn-group mr-2" role="group" aria-label="First group">
                     {
-                      todos.map((todo, i) => {
+                      todos
+                        .map((todo, i) => {
                         _todoCounter++;
                         if ( _todoCounter == paginationSize ) {
                           _todoCounter = 0;
