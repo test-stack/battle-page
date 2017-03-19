@@ -1,0 +1,53 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: battle
+  labels:
+    component: battle
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: battle
+    spec:
+      serviceAccount: battle
+      containers:
+      - name: battle
+        image: rdpanek/battle-page:test
+        imagePullPolicy: Always
+        env:
+        - name: ELASTIC_URI
+          value: "http://192.168.1.108:9200"
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 0.5
+          limits:
+            memory: 100Mi
+            cpu: 1
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: battle
+  labels:
+    component: battle
+spec:
+  type: NodePort
+  selector:
+    component: battle
+  ports:
+  - name: http
+    port: 8080
+    nodePort: 32685
+    protocol: TCP
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: battle

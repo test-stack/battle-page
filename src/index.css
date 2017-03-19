@@ -1,0 +1,16 @@
+.bg-inverse {
+  background-color: #178d81!important;
+}
+
+body {
+  background-color: #f1f4f5;
+}
+
+.top-buffer { margin-top:20px; }
+.btn-primary {
+  background-color: #62a8ea!important;
+  border-color: #62a8ea!important;
+}
+#footer {
+  color: #636c72;
+}
