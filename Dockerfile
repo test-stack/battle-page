@@ -18,4 +18,4 @@ RUN apk add --no-cache --virtual .yarn-deps curl gnupg tar && \
     yarn install && yarn build && \
     apk del .yarn-deps tar curl gnupg
 
-CMD ["yarn","server"]
+CMD ["yarn","start"]
