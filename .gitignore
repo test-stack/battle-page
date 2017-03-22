@@ -19,4 +19,4 @@ yarn.lock
 
 /data
 .idea
-e2e-tests/node_modules/
+tests/e2e/node_modules/
