@@ -77,9 +77,11 @@ export default class AddTodoForm extends PureComponent {
                                   id="alertCloseButton">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                          { this.props.successSaved && <span>Todo <strong>úspěšně</strong> uloženo.</span>}
-                          { this.props.successSaved === false &&
-                          <span>Todo se <strong>nezdařilo</strong> uložit.</span>}
+                          <div id="textBox">
+                            { this.props.successSaved && <span>Todo <strong>úspěšně</strong> uloženo.</span>}
+                            { this.props.successSaved === false &&
+                            <span>Todo se <strong>nezdařilo</strong> uložit.</span>}
+                          </div>
                         </div>
                         }
                         { (this.props.showAlert && this.props.validationError) &&
@@ -97,7 +99,7 @@ export default class AddTodoForm extends PureComponent {
           <div className="col-md-4" id="pageRightBlock">
             <div className="card">
               <div className="card-block">
-                <h2 className="card-title">Todo Formulář Komponenta </h2>
+                <h2 className="card-title">Todo Formulář Komponenta</h2>
                 <p>
                   <Link to="/todo" id="todoListComponentButton">Zobrazit Todo</Link>
                 </p>

@@ -2,11 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import About from './About';
 
-describe(' <About /> ', () => {
+describe('<About />', () => {
 
-  it('renders without crashing', () => {
+  it('should render card h1 Battle page', () => {
     const wrapper = shallow(<About />);
-    expect(wrapper.contains(<ul className="container-fluid"></ul>)).to.equal(true);
+    const div = <h1 className="card-title">Battle page</h1>;
+    expect(wrapper.contains(div)).toEqual(true);
   });
 
 });

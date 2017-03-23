@@ -58,3 +58,8 @@ git clone https://github.com/kubernetes/heapster/
 kubectl create -f heapster/deploy/kube-config/influxdb/
 minikube dashboard
 ```
+
+# CI
+
+## Git Commit / Unit tests
+More info: https://benmccormick.org/2017/02/26/running-jest-tests-before-each-git-commit/
